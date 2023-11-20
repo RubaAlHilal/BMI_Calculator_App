@@ -8,11 +8,13 @@ class BmiBloc extends Bloc<BmiEvent, BmiState> {
       try {
         if (event.height.isEmpty || event.weight.isEmpty) {
           emit(EmptyState());
+        } else if (event.height == "0" || event.weight == "0") {
+          emit(ZeroState());
         } else {
           double heightdouble = double.parse(event.height);
           double Weightdouble = double.parse(event.weight);
 
-          final double result = heightdouble / (Weightdouble * Weightdouble);
+          final double result = Weightdouble / (heightdouble * heightdouble);
           emit(ResultState(result));
         }
       } catch (e) {

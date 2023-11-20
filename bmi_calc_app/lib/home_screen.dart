@@ -62,6 +62,8 @@ class HomeScreen extends StatelessWidget {
                   builder: (context, state) {
                     if (state is InitialState) {
                       return const Text("");
+                    } else if (state is ZeroState) {
+                      return Text("please enter a valid number");
                     } else if (state is ResultState) {
                       return Text(
                         "Your Bmi is: ${state.result}\naverage: ${BmiAverage(state.result)}",

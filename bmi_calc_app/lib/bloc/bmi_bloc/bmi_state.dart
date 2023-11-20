@@ -10,3 +10,5 @@ class ResultState extends BmiState {
 class ErrorState extends BmiState {}
 
 class EmptyState extends BmiState {}
+class ZeroState extends BmiState {}
+
