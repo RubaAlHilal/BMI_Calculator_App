@@ -12,7 +12,7 @@ class BmiBloc extends Bloc<BmiEvent, BmiState> {
           double heightdouble = double.parse(event.height);
           double Weightdouble = double.parse(event.weight);
 
-          final double result = heightdouble + Weightdouble;
+          final double result = heightdouble / (Weightdouble * Weightdouble);
           emit(ResultState(result));
         }
       } catch (e) {
