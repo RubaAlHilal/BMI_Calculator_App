@@ -47,13 +47,19 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    //calculate bmi and insert value of bmi result into table bmi
-                    context.read<BmiBloc>().add(
-                        BmiEvent(heightController.text, weightController.text));
-                  },
-                  child: const Text("calculate"),
+                SizedBox(
+                  width: 175,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      //calculate bmi and insert value of bmi result into table bmi
+                      context.read<BmiBloc>().add(BmiEvent(
+                          heightController.text, weightController.text));
+                    },
+                    child: const Text(
+                      "calculate BMI",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
                 ),
                 const SizedBox(
                   height: 15,
@@ -63,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                     if (state is InitialState) {
                       return const Text("");
                     } else if (state is ZeroState) {
-                      return Text("please enter a valid number");
+                      return const Text("please enter a valid number");
                     } else if (state is ResultState) {
                       return Text(
                         "Your Bmi is: ${state.result}\naverage: ${BmiAverage(state.result)}",
