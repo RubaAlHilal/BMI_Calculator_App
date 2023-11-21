@@ -20,7 +20,7 @@ class TextfieldWidget extends StatelessWidget {
         controller: controller,
         autofocus: true,
         decoration: InputDecoration(
-            border: OutlineInputBorder(
+            border: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(25))),
             label: Text(title),
             hintText: hint),

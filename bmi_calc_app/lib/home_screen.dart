@@ -5,7 +5,6 @@ import 'package:bmi_calculator/bloc/bmi_bloc/bmi_event.dart';
 import 'package:bmi_calculator/bloc/bmi_bloc/bmi_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'components/textfield_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -34,7 +33,7 @@ class HomeScreen extends StatelessWidget {
                 TextfieldWidget(
                   title: 'Insert Weight',
                   hint: 'kg',
-                  controller: heightController,
+                  controller: weightController,
                 ),
                 const SizedBox(
                   height: 10,
@@ -42,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                 TextfieldWidget(
                   title: 'Insert Height',
                   hint: 'cm',
-                  controller: weightController,
+                  controller: heightController,
                 ),
                 const SizedBox(
                   height: 20,
@@ -72,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                       return const Text("please enter a valid number");
                     } else if (state is ResultState) {
                       return Text(
-                        "Your Bmi is: ${state.result}\naverage: ${BmiAverage(state.result)}",
+                        "Your Bmi is: ${state.result}\naverage: ${state.average}",
                         style: const TextStyle(
                             fontSize: 18, fontWeight: FontWeight.w500),
                       );
@@ -99,17 +98,5 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-BmiAverage(double result) {
-  if (result < 18.5) {
-    return "underweight";
-  } else if (18.5 <= result && result <= 24.9) {
-    return "healthy";
-  } else if (25.0 <= result && result <= 29.9) {
-    return "overweight";
-  } else {
-    return "out of range";
   }
 }

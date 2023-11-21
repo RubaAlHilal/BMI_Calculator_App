@@ -12,10 +12,27 @@ class BmiBloc extends Bloc<BmiEvent, BmiState> {
           emit(ZeroState());
         } else {
           double heightdouble = double.parse(event.height);
-          double Weightdouble = double.parse(event.weight);
+          double weightDouble = double.parse(event.weight);
 
-          final double result = Weightdouble / (heightdouble * heightdouble);
-          emit(ResultState(result));
+          final double result =
+              weightDouble / (heightdouble * heightdouble) * 10000;
+
+          bmiAverage(double result) {
+            if (result <= 18.4) {
+              return "Underweight";
+            } else if (18.5 <= result && result <= 24.9) {
+              return "Normal";
+            } else if (25.0 <= result && result <= 39.9) {
+              return "Overweight";
+            } else {
+              return "Obese";
+            }
+          }
+
+          String averageReselt = bmiAverage(result);
+
+          emit(ResultState(
+              double.parse(result.toStringAsFixed(1)), averageReselt));
         }
       } catch (e) {
         emit(ErrorState());
