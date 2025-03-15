@@ -6,6 +6,7 @@ import 'package:bmi_calculator/bloc/bmi_bloc/bmi_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'components/textfield_widget.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -21,33 +22,40 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text(
+              "BMI Calculator",
+              style:
+                  GoogleFonts.lato(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 25,
+            ),
             Column(
               children: [
-                const Text(
-                  "BMI Calculator",
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
-                ),
-                const SizedBox(
-                  height: 45,
-                ),
-                TextfieldWidget(
-                  title: 'Insert Weight',
-                  hint: 'kg',
-                  controller: weightController,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                TextfieldWidget(
-                  title: 'Insert Height',
-                  hint: 'cm',
-                  controller: heightController,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextfieldWidget(
+                      title: 'Insert Weight',
+                      hint: 'kg',
+                      controller: weightController,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    TextfieldWidget(
+                      title: 'Insert Height',
+                      hint: 'cm',
+                      controller: heightController,
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 SizedBox(
                   width: 175,
+                  height: 55,
                   child: ElevatedButton(
                     onPressed: () {
                       //calculate bmi and insert value of bmi result into table bmi
@@ -56,7 +64,8 @@ class HomeScreen extends StatelessWidget {
                     },
                     child: const Text(
                       "calculate BMI",
-                      style: TextStyle(fontSize: 16),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
